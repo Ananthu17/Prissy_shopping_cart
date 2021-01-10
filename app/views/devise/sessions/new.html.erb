@@ -1,0 +1,82 @@
+<!-- <h2>Log in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %> -->
+<!-- content -->
+<div class="page-header header-filter" style="background-color: rgb(252, 215, 246); background-size: cover;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+        <div class="card-new card-login" style="height: 85%;">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <!-- card header  -->
+            <div class="card-header card-header-primary text-center" style="background: linear-gradient(20deg, #6d60e6, #cb15f0);box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgba(176, 39, 39, 0.5);}">
+              <h4 class="card-title text-white pt-1">Login</h4>
+            </div>
+
+            <!-- card body  -->
+            <div class="card-body">
+              <!-- email input  -->
+              <div class="input-group mb-3 p-1 pr-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text mt-4">
+                    <i class="material-icons">email</i>
+                  </span>
+                </div>
+                <input autocomplete="email" type="email" name="admin[email]" class="form-control formcolor mt-4" placeholder="Username...">
+              </div>
+              <!-- password input  -->
+              <div class="input-group p-1 pr-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="material-icons">lock</i>
+                  </span>
+                </div>
+                <input type="password" name="admin[password]" autocomplete="current-password" class="form-control formcolor" placeholder="Password...">
+              </div>
+              <!-- submit button  -->
+              <div class="text-center mt-4 p-1">
+                <button type="submit" name="commit" class="btn btn-block btn-wd btn-sm" style="background: linear-gradient(20deg, #6d60e6, #cb15f0);">Get Started</button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <!-- end of card  -->
+      </div>
+    </div>
+    <!-- end of row  -->
+  </div>
+</div>
+<!-- end of content  -->    
+
+<!-- tauster message  -->
+<% unless flash.empty? %>
+<script type="text/javascript">
+  <% flash.each do |f| %>
+    <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'success') %>
+    toastr['<%= type %>']('<%= f[1] %>');
+  <% end %>
+</script>
+<% end %>
